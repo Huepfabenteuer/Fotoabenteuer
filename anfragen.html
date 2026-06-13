@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="de-AT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fotobox anfragen | Fotoabenteuer Kärnten</title>
+<meta name="description" content="Fotobox unverbindlich anfragen. Paket wählen, Termin angeben, fertig – wir melden uns innerhalb von 24 Stunden.">
+<link rel="canonical" href="https://fotoabenteuer.com/anfragen.html">
+<meta name="geo.region" content="AT-2">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fotoabenteuer.com/anfragen.html">
+<meta property="og:title" content="Fotobox anfragen | Fotoabenteuer Kärnten">
+<meta property="og:description" content="Wählen Sie Ihr Fotobox-Paket und senden Sie eine unverbindliche Anfrage. Antwort meist innerhalb von 24 h.">
+<meta property="og:image" content="https://fotoabenteuer.com/images/og-image.jpg">
+<meta property="og:locale" content="de_AT">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --midnight:#0B1120;--navy:#1E3A8A;--electric:#3B82F6;--flash:#F59E0B;
+  --snow:#F8FAFC;--ice:#EFF6FF;--white:#FFFFFF;--text:#0F172A;--muted:#475569;
+  --border:#E2E8F0;--border-dk:#1E293B;--success:#22C55E;
+  --shadow-md:0 4px 12px rgba(11,17,32,.08);
+  --radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:24px;--radius-full:9999px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:var(--snow);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:'Syne',system-ui,sans-serif;line-height:1.15;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+.icon{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.icon-sm{width:20px;height:20px}
+.container{max-width:1200px;margin:0 auto;padding-inline:24px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;border-radius:var(--radius-md);transition:transform .2s,box-shadow .2s,background .2s;cursor:pointer;white-space:nowrap;line-height:1}
+.btn:focus-visible{outline:3px solid var(--electric);outline-offset:2px}
+.btn:active{transform:translateY(0) scale(.97)!important;transition-duration:.1s}
+.btn-flash{background:var(--flash);color:var(--midnight);padding:14px 28px;font-size:1rem;box-shadow:0 4px 16px rgba(245,158,11,.3)}
+.btn-flash:hover{background:#e69009;transform:translateY(-2px);box-shadow:0 6px 24px rgba(245,158,11,.4)}
+.btn-outline-light{background:transparent;border:2px solid var(--border-dk);color:var(--white);padding:10px 20px;font-size:.875rem}
+.btn-outline-light:hover{border-color:var(--flash);color:var(--flash)}
+
+.site-header{background:var(--midnight);border-bottom:1px solid var(--border-dk);padding:14px 0}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo-link{display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:1.25rem;color:var(--white)}
+.logo-flash{width:8px;height:8px;background:var(--flash);border-radius:50%;box-shadow:0 0 8px var(--flash)}
+.header-phone{display:none;align-items:center;gap:6px;color:rgba(255,255,255,.65);font-size:.875rem;font-weight:500;transition:color .2s}
+.header-phone:hover{color:var(--white)}
+@media(min-width:768px){.header-phone{display:flex}}
+.header-right{display:flex;align-items:center;gap:12px}
+
+.page-hero{background:var(--midnight);color:var(--white);padding:48px 0 40px;text-align:center}
+.page-hero h1{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;margin-bottom:8px}
+.page-hero p{color:rgba(255,255,255,.5);font-size:1.0625rem;max-width:480px;margin:0 auto}
+
+.form-section{padding:48px 0 80px}
+.form-wrap{max-width:680px;margin:0 auto}
+.form-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-xl);padding:32px;box-shadow:var(--shadow-md)}
+@media(min-width:768px){.form-card{padding:40px 48px}}
+
+.pkg-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
+.pkg-pick{position:relative;cursor:pointer}
+.pkg-pick input{position:absolute;opacity:0;width:0;height:0}
+.pkg-pick-label{display:flex;flex-direction:column;align-items:center;padding:16px 8px;border:2px solid var(--border);border-radius:var(--radius-md);text-align:center;transition:all .2s;background:var(--white)}
+.pkg-pick-label:hover{border-color:var(--electric);background:var(--ice)}
+.pkg-pick input:checked+.pkg-pick-label{border-color:var(--flash);background:rgba(245,158,11,.06);box-shadow:0 0 0 3px rgba(245,158,11,.15)}
+.pkg-pick input:focus-visible+.pkg-pick-label{outline:3px solid var(--electric);outline-offset:2px}
+.pkg-pick-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:2px}
+.pkg-pick-price{font-size:1.25rem;font-weight:700;color:var(--navy)}
+.pkg-pick-tag{font-size:.6875rem;color:var(--muted);margin-top:2px}
+.pkg-pick-badge{position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:var(--flash);color:var(--midnight);font-size:.625rem;font-weight:700;padding:2px 10px;border-radius:var(--radius-full);white-space:nowrap;text-transform:uppercase;letter-spacing:.04em}
+
+.form-row{display:grid;gap:16px;margin-bottom:16px}
+@media(min-width:520px){.form-row-2{grid-template-columns:1fr 1fr}}
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:.8125rem;font-weight:500;margin-bottom:6px;color:var(--muted)}
+.req{color:#ef4444}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px;font-size:1rem;color:var(--text);font-family:inherit;transition:border-color .2s,box-shadow .2s}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(15,23,42,.25)}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--flash);box-shadow:0 0 0 3px rgba(245,158,11,.12)}
+.field-error{border-color:#ef4444!important;box-shadow:0 0 0 3px rgba(239,68,68,.1)!important}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.form-textarea{resize:vertical;min-height:100px}
+.form-check{display:flex;align-items:flex-start;gap:10px;margin:24px 0}
+.form-check input[type="checkbox"]{width:20px;height:20px;flex-shrink:0;accent-color:var(--flash);margin-top:2px;cursor:pointer}
+.form-check label{font-size:.8125rem;color:var(--muted);line-height:1.5;cursor:pointer}
+.form-check a{color:var(--electric);text-decoration:underline}
+
+.form-msg{padding:12px 16px;border-radius:var(--radius-sm);font-size:.875rem;font-weight:500;text-align:center;margin-bottom:16px;display:none}
+.form-msg.show{display:block}
+.form-msg.ok{background:rgba(34,197,94,.08);color:#16a34a;border:1px solid rgba(34,197,94,.2)}
+.form-msg.err{background:rgba(239,68,68,.06);color:#dc2626;border:1px solid rgba(239,68,68,.15)}
+.form-msg.info{background:rgba(59,130,246,.06);color:var(--electric);border:1px solid rgba(59,130,246,.15)}
+
+.form-aside{margin-top:32px;padding:24px;background:var(--ice);border-radius:var(--radius-lg);border:1px solid rgba(59,130,246,.08)}
+.form-aside h3{font-size:1rem;font-weight:600;margin-bottom:12px;color:var(--navy)}
+.form-aside-item{display:flex;gap:10px;align-items:center;padding:8px 0;font-size:.875rem}
+.form-aside-item svg{color:var(--electric);flex-shrink:0}
+.form-aside-item a{color:var(--text);font-weight:500}
+.form-aside-item a:hover{color:var(--electric)}
+
+.site-footer{background:var(--midnight);border-top:1px solid var(--border-dk);padding:24px 0;color:rgba(255,255,255,.4);font-size:.8125rem}
+.footer-inner{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+.footer-legal{display:flex;gap:16px;flex-wrap:wrap}
+.footer-legal a{transition:color .2s}
+.footer-legal a:hover{color:var(--white)}
+
+.mob-bar{position:fixed;bottom:0;left:0;right:0;z-index:90;background:var(--midnight);border-top:1px solid var(--border-dk);padding:8px 12px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(min-width:768px){.mob-bar{display:none}}
+.mob-bar a{display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;border-radius:var(--radius-sm);font-size:.8125rem;font-weight:600;color:var(--white);text-align:center}
+.mob-bar-call{background:rgba(255,255,255,.06)}
+.mob-bar-wa{background:#25D366}
+body{padding-bottom:60px}
+@media(min-width:768px){body{padding-bottom:0}}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="currentColor" stroke="none"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="/" class="logo-link" aria-label="Fotoabenteuer Startseite"><span class="logo-flash"></span>Fotoabenteuer</a>
+      <div class="header-right">
+        <a href="tel:+436641852634" class="header-phone"><svg class="icon-sm"><use href="#i-phone"/></svg>+43 664 185 26 34</a>
+        <a href="/" class="btn btn-outline-light"><svg class="icon-sm"><use href="#i-chev"/></svg>Zurück</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Fotobox unverbindlich anfragen</h1>
+    <p>Paket wählen, Daten eingeben, absenden – wir melden uns innerhalb von 24 Stunden.</p>
+  </div>
+</section>
+
+<section class="form-section">
+  <div class="container">
+    <div class="form-wrap">
+      <div class="form-card reveal">
+        <div id="formMsg" class="form-msg"></div>
+        <form id="anfrageForm" onsubmit="event.preventDefault();submitAnfrage()" novalidate>
+          <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Firma <input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+
+          <h3 style="font-size:1.125rem;font-weight:700;color:var(--navy);margin-bottom:16px">1. Paket wählen <span class="req">*</span></h3>
+          <div class="pkg-picker">
+            <label class="pkg-pick">
+              <input type="radio" name="Fotobox-Paket" value="Digital – 199 €">
+              <div class="pkg-pick-label"><span class="pkg-pick-name">Digital</span><span class="pkg-pick-price">199 €</span><span class="pkg-pick-tag">Ohne Druck</span></div>
+            </label>
+            <label class="pkg-pick">
+              <input type="radio" name="Fotobox-Paket" value="Standard – 299 €">
+              <span class="pkg-pick-badge">Beliebt</span>
+              <div class="pkg-pick-label"><span class="pkg-pick-name">Standard</span><span class="pkg-pick-price">299 €</span><span class="pkg-pick-tag">Mit Druck</span></div>
+            </label>
+            <label class="pkg-pick">
+              <input type="radio" name="Fotobox-Paket" value="Premium – 349 €">
+              <div class="pkg-pick-label"><span class="pkg-pick-name">Premium</span><span class="pkg-pick-price">349 €</span><span class="pkg-pick-tag">Alles inkl.</span></div>
+            </label>
+          </div>
+
+          <h3 style="font-size:1.125rem;font-weight:700;color:var(--navy);margin-bottom:16px">2. Event-Details</h3>
+          <div class="form-group">
+            <label for="anlass" class="form-label">Anlass</label>
+            <select id="anlass" name="Anlass" class="form-select"><option value="">Bitte wählen...</option><option value="Hochzeit">Hochzeit</option><option value="Geburtstag">Geburtstag</option><option value="Firmenfeier">Firmenfeier</option><option value="Ball">Ball / Gala</option><option value="Sonstiges">Sonstiges</option></select>
+          </div>
+          <div class="form-row form-row-2">
+            <div class="form-group" style="margin-bottom:0"><label for="datumStart" class="form-label">Event-Datum <span class="req">*</span></label><input type="date" id="datumStart" name="Datum" class="form-input" required></div>
+            <div class="form-group" style="margin-bottom:0"><label for="datumEnde" class="form-label">Enddatum <span style="color:var(--muted);font-weight:400">(optional)</span></label><input type="date" id="datumEnde" class="form-input"></div>
+          </div>
+
+          <h3 style="font-size:1.125rem;font-weight:700;color:var(--navy);margin:32px 0 16px">3. Ihre Daten</h3>
+          <div class="form-row form-row-2">
+            <div class="form-group" style="margin-bottom:0"><label for="vorname" class="form-label">Vorname <span class="req">*</span></label><input type="text" id="vorname" name="Vorname" class="form-input" placeholder="Max" required></div>
+            <div class="form-group" style="margin-bottom:0"><label for="nachname" class="form-label">Nachname <span class="req">*</span></label><input type="text" id="nachname" name="Nachname" class="form-input" placeholder="Mustermann" required></div>
+          </div>
+          <div class="form-row form-row-2">
+            <div class="form-group" style="margin-bottom:0"><label for="telefon" class="form-label">Telefon <span class="req">*</span></label><input type="tel" id="telefon" name="Telefon" class="form-input" placeholder="+43 ..." required></div>
+            <div class="form-group" style="margin-bottom:0"><label for="emailField" class="form-label">E-Mail <span class="req">*</span></label><input type="email" id="emailField" name="E-Mail" class="form-input" placeholder="ihre@email.at" required></div>
+          </div>
+          <div class="form-group"><label for="strasse" class="form-label">Straße & Hausnummer <span class="req">*</span></label><input type="text" id="strasse" name="Strasse" class="form-input" placeholder="Musterstraße 1" required></div>
+          <div class="form-row form-row-2">
+            <div class="form-group" style="margin-bottom:0"><label for="plzField" class="form-label">PLZ <span class="req">*</span></label><input type="text" id="plzField" name="PLZ" class="form-input" placeholder="9020" required></div>
+            <div class="form-group" style="margin-bottom:0"><label for="ortField" class="form-label">Ort <span class="req">*</span></label><input type="text" id="ortField" name="Ort" class="form-input" placeholder="Klagenfurt" required></div>
+          </div>
+          <div class="form-group"><label for="nachricht" class="form-label">Nachricht <span style="color:var(--muted);font-weight:400">(optional)</span></label><textarea id="nachricht" name="Nachricht" class="form-textarea" placeholder="Erzählen Sie uns von Ihrem Event..."></textarea></div>
+
+          <div class="form-check">
+            <input type="checkbox" id="dsgvoCheck" required>
+            <label for="dsgvoCheck">Ich stimme der <a href="/datenschutz.html" target="_blank">Datenschutzerklärung</a> zu und bin mit der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage einverstanden. <span class="req">*</span></label>
+          </div>
+
+          <button type="submit" id="submitBtn" class="btn btn-flash" style="width:100%;padding:16px;font-size:1.0625rem"><svg class="icon-sm"><use href="#i-msg"/></svg>Anfrage absenden</button>
+          <p style="font-size:.75rem;color:var(--muted);margin-top:8px;text-align:center">Wir melden uns meist innerhalb von 24 Stunden.</p>
+        </form>
+      </div>
+
+      <div class="form-aside reveal">
+        <h3>Lieber direkt?</h3>
+        <div class="form-aside-item"><svg class="icon-sm"><use href="#i-phone"/></svg><a href="tel:+436641852634">+43 664 185 26 34</a></div>
+        <div class="form-aside-item"><svg class="icon-sm"><use href="#i-wa"/></svg><a href="https://wa.me/436641852634?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Fotobox!" target="_blank" rel="noopener">Per WhatsApp schreiben</a></div>
+        <div class="form-aside-item"><svg class="icon-sm"><use href="#i-mail"/></svg><a href="mailto:info@fotoabenteuer.com">info@fotoabenteuer.com</a></div>
+        <div class="form-aside-item"><svg class="icon-sm"><use href="#i-map"/></svg><span>Glödnitz, Kärnten — Erste 40 km gratis</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span>&copy; 2025 Fotoabenteuer – Alexander Fodermayer</span>
+      <div class="footer-legal"><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a><a href="/agb.html">AGB</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="mob-bar" aria-label="Schnellkontakt">
+  <a href="tel:+436641852634" class="mob-bar-call"><svg class="icon-sm"><use href="#i-phone"/></svg>Anrufen</a>
+  <a href="https://wa.me/436641852634?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Fotobox!" class="mob-bar-wa" target="_blank" rel="noopener"><svg class="icon-sm"><use href="#i-wa"/></svg>WhatsApp</a>
+</div>
+
+<script>
+var ro=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');ro.unobserve(x.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el)});
+
+(function(){
+  var p=new URLSearchParams(location.search).get('paket');
+  if(!p)return;
+  var map={digital:0,standard:1,premium:2};
+  var idx=map[p.toLowerCase()];
+  if(idx!==undefined){var r=document.querySelectorAll('[name="Fotobox-Paket"]');if(r[idx])r[idx].checked=true}
+})();
+
+var FORMCARRY_ENDPOINT='HIER_FOTOABENTEUER_ENDPOINT_EINSETZEN';
+var THANK_YOU_URL='/danke.html';
+
+function showMsg(t,type){var el=document.getElementById('formMsg');el.textContent=t;el.className='form-msg show '+(type==='ok'?'ok':type==='info'?'info':'err');el.scrollIntoView({behavior:'smooth',block:'nearest'})}
+function flagField(el){if(!el)return;el.classList.add('field-error');el.focus();setTimeout(function(){el.classList.remove('field-error')},3000)}
+
+var DRAFT_KEY='fotoabenteuer_anfrage_draft_v1';
+(function(){
+  try{
+    var raw=localStorage.getItem(DRAFT_KEY);if(!raw)return;
+    var d=JSON.parse(raw);if(Date.now()-d.t>86400000){localStorage.removeItem(DRAFT_KEY);return}
+    var f=document.getElementById('anfrageForm');
+    Object.keys(d).forEach(function(k){if(k==='t'||k==='_paket')return;var el=document.getElementById(k);if(el&&!el.value)el.value=d[k]});
+    if(d._paket){document.querySelectorAll('[name="Fotobox-Paket"]').forEach(function(r){if(r.value===d._paket&&!f.querySelector('[name="Fotobox-Paket"]:checked'))r.checked=true})}
+    showMsg('Entwurf wiederhergestellt.','info');
+  }catch(e){}
+})();
+var _dt;document.getElementById('anfrageForm').addEventListener('input',function(){clearTimeout(_dt);_dt=setTimeout(function(){
+  var d={t:Date.now()};var f=document.getElementById('anfrageForm');
+  f.querySelectorAll('input:not([type=hidden]):not([type=checkbox]):not([type=radio]),select,textarea').forEach(function(el){if(el.id)d[el.id]=el.value});
+  var c=f.querySelector('[name="Fotobox-Paket"]:checked');if(c)d._paket=c.value;
+  try{localStorage.setItem(DRAFT_KEY,JSON.stringify(d))}catch(e){}
+},1000)});
+
+function submitAnfrage(){
+  var f=document.getElementById('anfrageForm');
+  var paket=f.querySelector('[name="Fotobox-Paket"]:checked')?f.querySelector('[name="Fotobox-Paket"]:checked').value:'';
+  var anlass=document.getElementById('anlass').value;
+  var vorname=document.getElementById('vorname').value.trim();
+  var nachname=document.getElementById('nachname').value.trim();
+  var telefon=document.getElementById('telefon').value.trim();
+  var email=document.getElementById('emailField').value.trim();
+  var startDat=document.getElementById('datumStart').value;
+  var endDat=document.getElementById('datumEnde').value;
+  var strasse=document.getElementById('strasse').value.trim();
+  var plz=document.getElementById('plzField').value.trim();
+  var ort=document.getElementById('ortField').value.trim();
+  var nachricht=document.getElementById('nachricht').value.trim();
+  if(f.querySelector('[name="company"]').value)return;
+
+  if(!paket){showMsg('Bitte ein Fotobox-Paket waehlen.','err');return}
+  if(!vorname){showMsg('Bitte Vornamen angeben.','err');flagField(document.getElementById('vorname'));return}
+  if(!nachname){showMsg('Bitte Nachnamen angeben.','err');flagField(document.getElementById('nachname'));return}
+  if(!telefon){showMsg('Bitte Telefonnummer angeben.','err');flagField(document.getElementById('telefon'));return}
+  if(!email||email.indexOf('@')===-1){showMsg('Bitte gueltige E-Mail angeben.','err');flagField(document.getElementById('emailField'));return}
+  if(!startDat){showMsg('Bitte Event-Datum waehlen.','err');flagField(document.getElementById('datumStart'));return}
+  if(!strasse){showMsg('Bitte Strasse angeben.','err');flagField(document.getElementById('strasse'));return}
+  if(!plz){showMsg('Bitte PLZ angeben.','err');flagField(document.getElementById('plzField'));return}
+  if(!ort){showMsg('Bitte Ort angeben.','err');flagField(document.getElementById('ortField'));return}
+  var dsgvo=document.getElementById('dsgvoCheck');
+  if(!dsgvo||!dsgvo.checked){showMsg('Bitte der Datenschutzerklaerung zustimmen.','err');return}
+
+  var datumLine=startDat+(endDat?' bis '+endDat:'');
+  var adresse=[strasse,(plz+' '+ort).trim()].filter(Boolean).join(', ');
+  var btn=document.getElementById('submitBtn');
+  btn.disabled=true;btn.textContent='Wird gesendet…';
+  showMsg('Anfrage wird gesendet…','info');
+
+  var fd=new FormData();
+  fd.append('subject','Neue Fotobox-Anfrage – '+paket+' – '+startDat);
+  fd.append('Fotobox-Paket',paket);
+  if(anlass)fd.append('Anlass',anlass);
+  fd.append('Datum',datumLine);
+  fd.append('Name',vorname+' '+nachname);
+  fd.append('Telefon',telefon);
+  fd.append('E-Mail',email);
+  if(adresse)fd.append('Adresse',adresse);
+  if(nachricht)fd.append('Nachricht',nachricht);
+
+  fetch(FORMCARRY_ENDPOINT,{method:'POST',headers:{'Accept':'application/json'},body:fd})
+  .then(function(res){return res.json().then(function(data){return{ok:res.ok,data:data}})})
+  .then(function(r){
+    if(r.ok){
+      try{localStorage.removeItem(DRAFT_KEY)}catch(e){}
+      showMsg('Anfrage gesendet!','ok');
+      var p=new URLSearchParams({paket:paket,anlass:anlass||'',datum:datumLine,name:vorname,ort:ort||''});
+      setTimeout(function(){window.location.replace(THANK_YOU_URL+'?'+p.toString())},800);
+    }else{
+      showMsg(((r.data&&r.data.message)||'Senden fehlgeschlagen.')+' Bitte rufen Sie uns an!','err');
+      btn.disabled=false;btn.innerHTML='<svg class="icon-sm"><use href="#i-msg"/></svg>Anfrage absenden';
+    }
+  })
+  .catch(function(){
+    showMsg('Netzwerkfehler. Bitte rufen Sie uns an: +43 664 185 26 34','err');
+    btn.disabled=false;btn.innerHTML='<svg class="icon-sm"><use href="#i-msg"/></svg>Anfrage absenden';
+  });
+}
+</script>
+<script src="/cookies.js" defer></script>
+</body>
+</html>
